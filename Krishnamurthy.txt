@@ -1,0 +1,31 @@
+#!/bin/bash
+
+factorial() {
+    n=$1
+    fact=1
+    for ((i=1; i<=n; i++))
+    do
+        fact=$((fact * i))
+    done
+    echo $fact
+}
+
+echo "Enter a number:"
+read num
+
+original_num=$num
+sum=0
+
+while [ $num -gt 0 ]
+do
+    digit=$((num % 10))
+    fact=$(factorial $digit)
+    sum=$((sum + fact))
+    num=$((num / 10))
+done
+
+if [ $sum -eq $original_num ]; then
+    echo "$original_num is a Krishnamurthy number"
+else
+    echo "$original_num is NOT a Krishnamurthy number"
+fi
